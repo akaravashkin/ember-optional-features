@@ -87,7 +87,7 @@ module.exports = {
 
       if (value !== undefined) {
         let KEY = `_${key.toUpperCase().replace(/-/g, '_')}`;
-        console.log('OPTIONALTEST 5 value =', value);
+        console.log('OPTIONALTEST 5 key, value =', key, value);
         EmberENV[KEY] = value;
       }
     });
