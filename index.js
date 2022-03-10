@@ -25,6 +25,7 @@ module.exports = {
     try {
       Object.assign(features, this.project.require(configPath));
     } catch (err) {
+      console.error('OPTIONAL FEATURE TEST', err);
       if (err.code !== 'MODULE_NOT_FOUND') {
         throw err;
       }
