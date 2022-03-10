@@ -21,11 +21,12 @@ module.exports = {
     let features = {};
 
     let configPath = getConfigPath(this.project);
-
+    console.log('OPTIONALTEST 1', configPath);
+    
     try {
       Object.assign(features, this.project.require(configPath));
     } catch (err) {
-      console.error('OPTIONAL FEATURE TEST', err);
+      console.log('OPTIONALTEST 2', err);
       if (err.code !== 'MODULE_NOT_FOUND') {
         throw err;
       }
@@ -35,6 +36,8 @@ module.exports = {
       Object.assign(features, JSON.parse(process.env.EMBER_OPTIONAL_FEATURES));
     }
 
+    console.log('OPTIONALTEST 3', features);
+    
     return features;
   },
 
@@ -76,12 +79,15 @@ module.exports = {
   config() {
     let EmberENV = {};
     let features = this._features;
+    
+    console.log('OPTIONALTEST 4', features);
 
     Object.keys(FEATURES).forEach((key) => {
       let value = features[key];
 
       if (value !== undefined) {
         let KEY = `_${key.toUpperCase().replace(/-/g, '_')}`;
+        console.log('OPTIONALTEST 5 value =', value);
         EmberENV[KEY] = value;
       }
     });
